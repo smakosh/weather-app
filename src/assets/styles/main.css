@@ -68,6 +68,17 @@ header .App-logo {
     .card {
         padding: 4rem 1rem;
     }
+    header h2 {
+        font-size: 12pt;
+    }
+    .result h1 {
+        font-size: 14pt;
+    }
+
+    .result h2, h4 {
+        font-size: 12pt;
+    }
+
     .result .city {
         width: 90%;
     }

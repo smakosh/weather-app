@@ -1,0 +1,169 @@
+.app {
+    height: 100vh;
+}
+
+.valigned {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+header {
+    position: absolute;
+    top: -2.5rem;
+    left: 0;
+    right: 0;
+}
+
+header h2 {
+    color: #fff;
+}
+
+header .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+}
+
+@keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.card {
+    padding: 4rem 3rem;
+}
+
+.card form {
+    padding-top: 2rem;
+}
+
+.card form .btn {
+    background: #67bae9;
+    border-radius: 3rem;
+    box-shadow: 0 3px 20px 0 #67b9e99f;
+    transition: .6s;
+}
+
+.weather-icon:before {
+    content: '';
+}
+
+.result {
+    color: #fff;
+    padding: 2rem 0 1rem 0;
+}
+
+.result h1, h2, h4 {
+    font-weight: initial;
+}
+
+.result .city {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #fff;
+    width: 20%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        padding: 4rem 1rem;
+    }
+    .result .city {
+        width: 90%;
+    }
+}
+
+.maker h4 {
+    color: #fff;
+}
+
+.maker .fa {
+    color: rgb(233, 42, 42);
+    animation: beat .25s infinite alternate;
+    transform-origin: center;
+    margin: 0 .5rem;
+}
+
+@keyframes beat {
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.maker a {
+    color: #04759e;
+}
+
+#nprogress .bar {
+    height: 6px !important;
+}
+
+.night-clear{
+    background: #161e2b;
+}
+.night-clear-clear{
+    background: #223149;
+}
+
+.day-sunny{
+    background: #FF5722;
+}
+.day-sunny-clear{
+    background: #FF9800;
+}
+
+.cloudy-windy{
+    background: #2c3e52;
+}
+.cloudy-windy-clear{
+    background: #76a6d8;
+}
+
+.day-cloudy{
+    background: #7b8a8a;
+}
+.day-cloudy-clear{
+    background: #a8b8b8;
+}
+
+.night-alt-partly-cloudy{
+    background: #474e4e;
+}
+.night-alt-partly-cloudy-clear{
+    background: #8f9696;
+}
+
+.rain{
+    background: #0248ab;
+}
+.rain-clear{
+    background: #008fff;
+}
+
+.snow{
+    background: #00445d;
+}
+.snow-clear{
+    background: #04759e;
+}
+
+.sleet{
+    background: #27354d;
+}
+.sleet-clear{
+    background: #4c6286;
+}
+
+.fog{
+    background: #292b2e;
+}
+.fog-clear{
+    background: #404041;
+}
+
+.cloudy{
+    background: #a9a7a7;
+}
+.cloudy-clear{
+    background: #cecece;
+}

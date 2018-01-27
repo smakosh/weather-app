@@ -4,7 +4,6 @@ import axios from 'axios'
 import NProgress from 'react-nprogress'
 
 import 'react-nprogress/nprogress.css'
-import 'weather-icons/css/weather-icons.css'
 import 'unnamed'
 import '../assets/styles/main.css'
 import logo from '../assets/img/logo.svg'

@@ -9,6 +9,11 @@
     padding: 6rem 6rem;
 }
 
+/* 
+    Weather icons available: 
+        clear-night, clear-day, wind, partly-cloudy-day, partly-cloudy-night, rain, snow, sleet, fog, cloudy
+*/
+
 .clearNight-icon{
     background-image: url('../img/weather-icons/clear-night.svg')
 }

@@ -3,6 +3,8 @@ import moment from 'moment'
 import axios from 'axios'
 import NProgress from 'react-nprogress'
 
+import ModalAlert from './modal'
+
 import 'react-nprogress/nprogress.css'
 import 'unnamed'
 import '../assets/styles/main.css'
@@ -13,6 +15,7 @@ import Icon from './icon'
 export default class App extends Component {
     
     state = {
+        errorText: undefined,
         City: '',
         day: '',
         temperature: '',
@@ -21,6 +24,10 @@ export default class App extends Component {
     }
 
     maker = 'http://smakosh.com'
+
+    closeModal = () => {
+        this.setState(() => ({errorText: undefined}))
+    }
 
     Convert = temp => `${((temp - 32) * 5/9).toFixed(2)} °C`
 
@@ -62,8 +69,12 @@ export default class App extends Component {
                 icon
             }))
         }).catch((e) => {
-            if(e.code === 'ENOTFOUND') console.log('unable to connect to API servers')
-            else console.log(e.message)
+            if(e.code === 'ENOTFOUND') {
+                return this.setState(() => ({ errorText: 'unable to connect to API servers' }))
+            }
+            else {
+                return this.setState(() => ({ errorText: `Couldn't find that city, try something else` }))
+            }
         })
     }
 
@@ -90,10 +101,12 @@ export default class App extends Component {
         NProgress.start()
         const FormCity = e.target.elements.city.value
         if(!FormCity) {
-            alert('Please enter the name of a city!')
+            this.setState(() => ({ errorText: 'Please enter the name of a city!' }))
+            NProgress.done()
+        } else {
+            this.GetWeather(FormCity)
+            NProgress.done()
         }
-        this.GetWeather(FormCity)
-        NProgress.done()
     }
     render() {
         return (
@@ -109,7 +122,7 @@ export default class App extends Component {
                                 <div className="column xlarge-2 large-1 hide-tablet-down"></div>
                                 <div className="column xlarge-8 large-10 small-12">
                                     <form onSubmit={this.onSubmit}>
-                                        <div className="input-field purple-input">
+                                        <div className="input-field">
                                             <span className="weather-icon"></span>
                                             <input type="text" name="city" placeholder="Ex: London..." autoComplete="off"/>
                                         </div>
@@ -147,6 +160,10 @@ export default class App extends Component {
                         </div>
                     </div>
                 </div>
+                <ModalAlert
+                    errorText={this.state.errorText}
+                    closeModal={this.closeModal}
+                />
             </div>
         )
     }

@@ -29,6 +29,13 @@ header .App-logo {
     to { transform: rotate(360deg); }
 }
 
+.input-field input {
+    border-radius: 2rem;
+    border: unset;
+    box-shadow: 0px 9px 15px 0px #1f1f1f0a;
+    margin-bottom: 2rem;
+}
+
 .card {
     padding: 4rem 3rem;
 }
@@ -60,7 +67,7 @@ header .App-logo {
 .result .city {
     padding-bottom: 1rem;
     border-bottom: 4px solid #fff;
-    width: 30%;
+    width: 60%;
 }
 
 @media screen and (max-width: 600px) {
@@ -109,12 +116,6 @@ header .App-logo {
 #nprogress .bar {
     height: 6px !important;
 }
-
-/* 
-
-Weather icons available: 
-    clear-night, clear-day, wind, partly-cloudy-day, partly-cloudy-night, rain, snow, sleet, fog, cloudy
-*/
 
 .clearNight{
     background: #161e2b;

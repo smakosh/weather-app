@@ -59,9 +59,8 @@ header .App-logo {
 
 .result .city {
     padding-bottom: 1rem;
-    border-bottom: 1px solid #fff;
-    width: 20%;
-    margin: 0 auto;
+    border-bottom: 4px solid #fff;
+    width: 30%;
 }
 
 @media screen and (max-width: 600px) {
@@ -71,16 +70,18 @@ header .App-logo {
     header h2 {
         font-size: 12pt;
     }
+    .result {
+        text-align: center;
+    }
     .result h1 {
         font-size: 14pt;
     }
-
     .result h2, h4 {
         font-size: 12pt;
     }
-
     .result .city {
         width: 90%;
+        margin: 0 auto;
     }
 }
 
@@ -109,38 +110,44 @@ header .App-logo {
     height: 6px !important;
 }
 
-.night-clear{
+/* 
+
+Weather icons available: 
+    clear-night, clear-day, wind, partly-cloudy-day, partly-cloudy-night, rain, snow, sleet, fog, cloudy
+*/
+
+.clearNight{
     background: #161e2b;
 }
-.night-clear-clear{
+.clearNight-clear{
     background: #223149;
 }
 
-.day-sunny{
+.clearDay{
     background: #FF5722;
 }
-.day-sunny-clear{
+.clearDay-clear{
     background: #FF9800;
 }
 
-.cloudy-windy{
+.wind{
     background: #2c3e52;
 }
-.cloudy-windy-clear{
+.wind-clear{
     background: #76a6d8;
 }
 
-.day-cloudy{
+.partlyCloudyDay{
     background: #7b8a8a;
 }
-.day-cloudy-clear{
+.partlyCloudyDay-clear{
     background: #a8b8b8;
 }
 
-.night-alt-partly-cloudy{
+.partlyCloudyNight{
     background: #474e4e;
 }
-.night-alt-partly-cloudy-clear{
+.partlyCloudyNight-clear{
     background: #8f9696;
 }
 

@@ -9,6 +9,8 @@ import 'unnamed'
 import '../assets/styles/main.css'
 import logo from '../assets/img/logo.svg'
 
+import Icon from './icon'
+
 export default class App extends Component {
     
     state = {
@@ -16,7 +18,7 @@ export default class App extends Component {
         day: '',
         temperature: '',
         summary: '',
-        icon: 'night-clear'
+        icon: 'clearNight'
     }
 
     maker = 'http://smakosh.com'
@@ -48,11 +50,10 @@ export default class App extends Component {
             const summary = response.data.currently.summary
             let icon = response.data.currently.icon
 
-            if(icon === 'clear-day') icon = 'day-sunny'
-            else if(icon === 'clear-night') icon = 'night-clear'
-            else if(icon === 'wind') icon = 'cloudy-windy'
-            else if(icon === 'partly-cloudy-day') icon = 'day-cloudy'
-            else if(icon === 'partly-cloudy-night') icon = 'night-alt-partly-cloudy'
+            if(icon === 'clear-day') icon = 'clearDay'
+            else if(icon === 'clear-night') icon = 'clearNight'
+            else if(icon === 'partly-cloudy-day') icon = 'partlyCloudyDay'
+            else if(icon === 'partly-cloudy-night') icon = 'partlyCloudyNight'
 
             this.setState(() => ({
                 City,
@@ -123,14 +124,19 @@ export default class App extends Component {
                                 <div className="column xlarge-2 large-1 hide-tablet-down"></div>
                             </div>
                             { this.state.City.length > 0 ?
-                                <div className="center-text result">
-                                    <h1 className="city">{this.state.City}</h1>
-
-                                    <h2>Today is {this.state.day} & currently it's:</h2>
-
-                                    <h1>{this.state.temperature}</h1>
-
-                                    <h2><i className={`wi wi-${this.state.icon}`}></i> The weather is {this.state.summary}</h2>
+                                <div className="result">
+                                    <div className="row">
+                                        <div className="column xlarge-6 small-12 center-text">
+                                            <Icon
+                                                icon={this.state.icon}
+                                            />
+                                            <h1>{this.state.temperature}</h1>
+                                        </div>
+                                        <div className="column xlarge-6 small-12">
+                                            <h1 className="city">{this.state.City}</h1>
+                                            <h2>Today is {this.state.day} & The weather is {this.state.summary}</h2>
+                                        </div>
+                                    </div>
                                 </div>
                                 : null
                             }

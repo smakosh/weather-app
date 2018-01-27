@@ -10,11 +10,11 @@
 }
 
 .clearNight-icon{
-    background-image: url('../img/weather-icons/clear-day.svg')
+    background-image: url('../img/weather-icons/clear-night.svg')
 }
 
 .clearDay-icon{
-    background-image: url('../img/weather-icons/clear-night.svg')
+    background-image: url('../img/weather-icons/clear-day.svg')
 }
 
 .wind-icon{

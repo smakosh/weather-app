@@ -29,7 +29,7 @@ export default class App extends Component {
         this.setState(() => ({errorText: undefined}))
     }
 
-    Convert = temp => `${((temp - 32) * 5/9).toFixed(2)} °C`
+    Convert = temp => `${((temp - 32) * 5/9).toFixed(0)} °C`
 
     GetWeather = City => {
 

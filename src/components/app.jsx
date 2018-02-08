@@ -40,6 +40,7 @@ export default class App extends Component {
             if(response.data.status === 'ZERO_RESULTS') {
                 throw new Error('Unable to find that City')
             }
+
             const lat = response.data.results[0].geometry.location.lat 
             const lng = response.data.results[0].geometry.location.lng
 
@@ -61,19 +62,19 @@ export default class App extends Component {
             else if(icon === 'partly-cloudy-day') icon = 'partlyCloudyDay'
             else if(icon === 'partly-cloudy-night') icon = 'partlyCloudyNight'
 
-            this.setState(() => ({
+            this.setState({
                 City,
                 day,
                 temperature,
                 summary,
                 icon
-            }))
+            })
         }).catch((e) => {
             if(e.code === 'ENOTFOUND') {
-                return this.setState(() => ({ errorText: 'unable to connect to API servers' }))
+                return this.setState({ errorText: 'unable to connect to API servers' })
             }
             else {
-                return this.setState(() => ({ errorText: `Couldn't find that city, try something else` }))
+                return this.setState({ errorText: `Couldn't find that city, try something else` })
             }
         })
     }
@@ -108,46 +109,69 @@ export default class App extends Component {
             NProgress.done()
         }
     }
+
+    eraseState = () => {
+        this.setState({
+            City: '',
+            day: '',
+            temperature: '',
+            summary: '',
+            icon: 'clearNight'
+        })
+    }
     render() {
         return (
             <div className={`container-full app ${this.state.icon}`}>
                 <div className="valigned">
                     <div className="container center-text">
                         <div className={`card left-text ${this.state.icon}-clear`}>
-                            <header className="center-text">
+                        { this.state.City.length === 0 ?
+                            <div>
+                                <header className="center-text">
                                 <img src={logo} className="App-logo" alt="logo" />
                                 <h2>Enter the name of a city down bellow</h2>
-                            </header>
-                            <div className="row">
-                                <div className="column xlarge-2 large-1 hide-tablet-down"></div>
-                                <div className="column xlarge-8 large-10 small-12">
-                                    <form onSubmit={this.onSubmit}>
-                                        <div className="input-field">
-                                            <span className="weather-icon"></span>
-                                            <input type="text" name="city" placeholder="Ex: London..." autoComplete="off"/>
-                                        </div>
-                                        <div className="center-text">
-                                            <button type="submit" className="btn">
-                                                Submit
-                                            </button>
-                                        </div>
-                                    </form>
+                                </header>
+                                
+                                <div className="row">
+                                    <div className="column xlarge-2 large-1 hide-tablet-down"></div>
+                                    <div className="column xlarge-8 large-10 small-12">
+                                        <form onSubmit={this.onSubmit}>
+                                            <div className="input-field">
+                                                <span className="weather-icon"></span>
+                                                <input type="text" name="city" placeholder="Ex: London..." autoComplete="off"/>
+                                            </div>
+                                            <div className="center-text">
+                                                <button type="submit" className="btn">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div className="column xlarge-2 large-1 hide-tablet-down"></div>
                                 </div>
-                                <div className="column xlarge-2 large-1 hide-tablet-down"></div>
                             </div>
+                            : null
+                            }
                             { this.state.City.length > 0 ?
                                 <div className="result">
                                     <div className="row">
-                                        <div className="column xlarge-6 small-12 center-text">
+                                        <div className="column xlarge-6 large-6 medium-12 small-12 center-text">
                                             <Icon
                                                 icon={this.state.icon}
                                             />
                                             <h1>{this.state.temperature}</h1>
                                         </div>
-                                        <div className="column xlarge-6 small-12">
+                                        <div className="column xlarge-6 large-6 medium-12 small-12">
                                             <h1 className="city">{this.state.City}</h1>
                                             <h2>Today is {this.state.day} & The weather is {this.state.summary}</h2>
                                         </div>
+                                        <button 
+                                            type="button" 
+                                            className="btn custom"
+                                            onClick={this.eraseState}
+                                        >
+                                            Try again
+                                        </button>
                                     </div>
                                 </div>
                                 : null

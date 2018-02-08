@@ -70,6 +70,29 @@ header .App-logo {
     width: 60%;
 }
 
+.custom {
+    background: linear-gradient(80deg,#8559fd,#db53bb);
+    border-radius: 3rem;
+    box-shadow: 0 4px 13px 0 #ca54c894;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.custom:hover {
+    transform: scale(1.05);
+    transition: .2s;
+}
+
+@media screen and (max-width: 960px) {
+    .result {
+        text-align: center;
+    }
+    .result .city {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .card {
         padding: 3rem 1rem 0 1rem;
@@ -77,18 +100,11 @@ header .App-logo {
     header h2 {
         font-size: 12pt;
     }
-    .result {
-        text-align: center;
-    }
     .result h1 {
         font-size: 14pt;
     }
     .result h2, h4 {
         font-size: 12pt;
-    }
-    .result .city {
-        width: 90%;
-        margin: 0 auto;
     }
 }
 
